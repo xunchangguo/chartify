@@ -42,7 +42,7 @@ func generateObjectMetaTemplate(objectMeta metav1.ObjectMeta, key string, value 
 		value[Namespace] = objectMeta.Namespace
 		objectMeta.Namespace = fmt.Sprintf("{{.Values.%s.%s}}", key, Namespace)
 	}
-	objectMeta.Labels = generateTemplateForLables(objectMeta.Labels)
+	objectMeta.Labels = generateTemplateForLables(objectMeta.Labels, key)
 	return objectMeta
 }
 
@@ -148,6 +148,13 @@ func generateTemplateForPodSpec(podSpec apiv1.PodSpec, key string, value map[str
 
 		podSpec.ImagePullSecrets = imagePullSecretsObj
 
+	}
+	if len(podSpec.NodeSelector) != 0 {
+		for k, v := range podSpec.NodeSelector {
+			skey := generateSafeKey(k)
+			value[skey] = v
+			podSpec.NodeSelector[k] = fmt.Sprintf("{{.Values.%s.%s}}", key, skey)
+		}
 	}
 
 	return podSpec
@@ -365,13 +372,14 @@ func generateTemplateForContainer(containers []apiv1.Container, key string, valu
 	return result
 }
 
-func generateTemplateForLables(labels map[string]string) map[string]string { // Add labels needed for chart
+func generateTemplateForLables(labels map[string]string, key string) map[string]string { // Add labels needed for chart
 	if labels == nil {
 		labels = make(map[string]string, 0)
 	}
 	labels["chart"] = `{{.Chart.Name}}-{{.Chart.Version}}`
 	labels["release"] = `{{.Release.Name}}`
 	labels["heritage"] = `{{.Release.Service}}`
+	labels[Cluster] = fmt.Sprintf("{{.Values.%s.%s}}", key, Cluster)
 	return labels
 }
 
