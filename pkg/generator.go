@@ -335,7 +335,7 @@ func replicaSetTemplate(replicaSet extensions.ReplicaSet) (string, valueFileGene
 		replicaSet.Spec.Template.Spec.Volumes = nil
 	}
 	if replicaSet.Spec.Selector != nil {
-		modifyLabelSelector(replicaSet.Spec.Selector, replicaSet.Spec.Template.Labels, replicaSet.ObjectMeta.Labels)
+		modifyLabelSelector(replicaSet.Spec.Selector, replicaSet.Spec.Template.Labels, replicaSet.ObjectMeta.Labels, value)
 	}
 	template := ""
 	tempRcSetByte, err := ylib.Marshal(replicaSet)
@@ -380,7 +380,7 @@ func deploymentTemplate(deployment extensions.Deployment) (string, valueFileGene
 	}
 
 	if deployment.Spec.Selector != nil {
-		modifyLabelSelector(deployment.Spec.Selector, deployment.Spec.Template.Labels, deployment.ObjectMeta.Labels)
+		modifyLabelSelector(deployment.Spec.Selector, deployment.Spec.Template.Labels, deployment.ObjectMeta.Labels, value)
 	}
 
 	template := ""
@@ -417,7 +417,7 @@ func daemonsetTemplate(daemonset extensions.DaemonSet) (string, valueFileGenerat
 	}
 
 	if daemonset.Spec.Selector != nil {
-		modifyLabelSelector(daemonset.Spec.Selector, daemonset.Spec.Template.Labels, daemonset.ObjectMeta.Labels)
+		modifyLabelSelector(daemonset.Spec.Selector, daemonset.Spec.Template.Labels, daemonset.ObjectMeta.Labels, value)
 	}
 
 	template := ""
@@ -448,7 +448,7 @@ func statefulsetTemplate(statefulset apps.StatefulSet) (string, valueFileGenerat
 	}
 	statefulset.Spec.Template.Spec = generateTemplateForPodSpec(statefulset.Spec.Template.Spec, key, value)
 	if statefulset.Spec.Selector != nil {
-		modifyLabelSelector(statefulset.Spec.Selector, statefulset.Spec.Template.Labels, statefulset.ObjectMeta.Labels)
+		modifyLabelSelector(statefulset.Spec.Selector, statefulset.Spec.Template.Labels, statefulset.ObjectMeta.Labels, value)
 	}
 	if len(statefulset.Spec.Template.Spec.Volumes) != 0 {
 		volumes, persistence = generateTemplateForVolume(statefulset.Spec.Template.Spec.Volumes, key, value)
@@ -486,7 +486,7 @@ func jobTemplate(job batch.Job) (string, valueFileGenerator) {
 		job.Spec.Template.Spec.Volumes = nil
 	}
 	if job.Spec.Selector != nil {
-		modifyLabelSelector(job.Spec.Selector, job.Spec.Template.Labels, job.ObjectMeta.Labels)
+		modifyLabelSelector(job.Spec.Selector, job.Spec.Template.Labels, job.ObjectMeta.Labels, value)
 	}
 	tempJobByte, err := ylib.Marshal(job)
 	if err != nil {
@@ -709,9 +709,16 @@ func getObjectKindAndName(yamlData string) (string, string) {
 	return typeMeta.Kind, objName
 }
 
-func modifyLabelSelector(selector *metav1.LabelSelector, templateLabels map[string]string, metaLabels map[string]string) {
+func modifyLabelSelector(selector *metav1.LabelSelector, templateLabels map[string]string, metaLabels map[string]string, value map[string]interface{}) {
 	if len(selector.MatchLabels) == 0 {
 		return
+	}
+	cv, ok := selector.MatchLabels[Cluster]
+	if ok {
+		selector.MatchLabels[Cluster] = metaLabels[Cluster]
+		templateLabels[Cluster] = selector.MatchLabels[Cluster]
+		metaLabels[Cluster] = selector.MatchLabels[Cluster]
+		value[Cluster] = cv
 	}
 	for k, v := range selector.MatchLabels {
 		_, ok := templateLabels[k]
