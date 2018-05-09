@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/appscode/chartify/pkg"
 	"github.com/spf13/cobra"
+	"github.com/xunchangguo/chartify/pkg"
 )
 
 func NewCmdCreate() *cobra.Command {
