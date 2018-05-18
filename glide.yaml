@@ -1,4 +1,4 @@
-package: github.com/appscode/chartify
+package: github.com/xunchangguo/chartify
 import:
 - package: github.com/appscode/go
 - package: github.com/ghodss/yaml
