@@ -23,7 +23,7 @@ if [[ "$(pwd)" != "${DEP_ROOT}" ]]; then
   exit 1
 fi
 
-GO_BUILD_CMD="go build -a -installsuffix cgo"
+GO_BUILD_CMD="go build -a"
 GO_BUILD_LDFLAGS="-s -w -X main.commitHash=${COMMIT_HASH} -X main.buildDate=${DATE} -X main.version=${VERSION} -X main.flagImportDuringSolve=${IMPORT_DURING_SOLVE}"
 
 if [[ -z "${DEP_BUILD_PLATFORMS}" ]]; then
