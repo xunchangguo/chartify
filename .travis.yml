@@ -13,6 +13,7 @@ jobs:
       install: skip
       script: skip
       before_deploy:
+        - chmod +x ./hack/build-all.bash
         - ./hack/build-all.bash
       deploy:
         - provider: releases
