@@ -15,7 +15,7 @@ jobs:
       deploy:
         - provider: releases
           api_key:
-            secure: "${secure}"
+            secure: "DAwJNazefrsHVTCxBKZl/a5mzDTKfRzl01GaMZv/GJgWBTAvd/Rsiw0qmQ6FNH72o1q2DX+r7wZEjW7c1+5mm0p6mv3vh71thzNM4OSegEfdVaXJdeNCI8/zjxJv34Xwd32ShqcPRJlqsP9TUA2UxXjQad2UN5ktkSkzSwg1uCCZyFf6ThzmEUWErcehb47Scejv8g8OiG5U4hSJdlX1jULj4behVfvjEmngDipXBp04CHP3/sgkdR3Y/6Ueg5mxVqEUfkV49U/kLYz4t3i8RfYTe8Vc/QuTCAg5z5T28D/ab0NnOnmlxS1GEDxjAyyxshiYRF2XD5UEspQC/+dn39HzhZe96wptDnkbkNXYzRzklujQ758QQYBQdOhz7NbjPo1pXtCHYv05aRXSB23ZYG1CPq7cbPXtlYj6RFAdg7fsphx74ZLPnhFoSTrYhUM4xKzLVt4txhhEEg/e9sV+2kwv4R77hoNzbSf1g52Cke6FM3wQQBdI/tnc9YmhLcN/VP8B4W6iPBP6GOBta7sihXIaHd57nj30/v9hB+wNIWzZUKMJd5OJZUYkZ1w3nip8WUOCl3Ceal9H0xtXMQ0Dc6wgMctvH4hwGIS4zxJ1mz8gB7iPSCLfeD56ekArNd4ryYbUj+BrAjJYVV28YPrxJPF6uZxkzw6sFY/g16ZYGT4="
           file:
             - release/dep-linux-amd64
             - release/dep-linux-amd64.sha256
