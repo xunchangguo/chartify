@@ -15,7 +15,7 @@ jobs:
       deploy:
         - provider: releases
           api_key:
-            secure: WT6xtV6OiVo9js+jwk0DfLL7rNIq99Ay2DyPYcc/QtNCtE5mQeM9bJfsLPJf9KJJ9libe5KNfOb36PzgYtmcUMOKzirzPNSGdCVKw30eB7oEkezxmXqZC24vGd2BSOWyOOLTC0h5QYOGiDC/Jj7MKie+I3AdhosevcHUmaMCsdWcSl/Eb+3RsqCx2Qz5jV9X0kNzbfqbK6sXoWJNTBcSmQwP8210nfTfH6+jUNZiq7wJNaIIwFtCQRcp4byvdvkFozwWBeni2tJmcRj4TT//3ckzVJFJOj/EvNuWHWYKx3Z+bze6NRvx/1wTT7KfQfuOLlWK1k1ZDFIpYSitRoJXqC7Lw+v/NrOia8vNdd+ScYdiQFERe0uIpTUnUMx1N4MTUFF0UHmGkRGaIsPpv/q4d9+BrjAmHp7KoghK09kcmx/ZE+mDFz7+A3x3byHFvlsd0cgvcy96hdWmvgRwJzDHowKAcwZbYSwaEoTipFcc922oZSGouwbxn8XSf4PphLYwzbcxrY1KfMJuDFk5UM7L2ckhfM0mqoNH+00j49RJpvCAHT63SYCSDod8KtPrDuQZP0SMR76UsG8zmN29a4LsD/tI8DBmGPNcxLSo2imbLRSfaH2GNM1E6wDhg/nW7IVWAY8iMWLEYhgkUm9BBaphRgIVQRYQYjqLGSIuzy066lg=
+            secure: "WT6xtV6OiVo9js+jwk0DfLL7rNIq99Ay2DyPYcc/QtNCtE5mQeM9bJfsLPJf9KJJ9libe5KNfOb36PzgYtmcUMOKzirzPNSGdCVKw30eB7oEkezxmXqZC24vGd2BSOWyOOLTC0h5QYOGiDC/Jj7MKie+I3AdhosevcHUmaMCsdWcSl/Eb+3RsqCx2Qz5jV9X0kNzbfqbK6sXoWJNTBcSmQwP8210nfTfH6+jUNZiq7wJNaIIwFtCQRcp4byvdvkFozwWBeni2tJmcRj4TT//3ckzVJFJOj/EvNuWHWYKx3Z+bze6NRvx/1wTT7KfQfuOLlWK1k1ZDFIpYSitRoJXqC7Lw+v/NrOia8vNdd+ScYdiQFERe0uIpTUnUMx1N4MTUFF0UHmGkRGaIsPpv/q4d9+BrjAmHp7KoghK09kcmx/ZE+mDFz7+A3x3byHFvlsd0cgvcy96hdWmvgRwJzDHowKAcwZbYSwaEoTipFcc922oZSGouwbxn8XSf4PphLYwzbcxrY1KfMJuDFk5UM7L2ckhfM0mqoNH+00j49RJpvCAHT63SYCSDod8KtPrDuQZP0SMR76UsG8zmN29a4LsD/tI8DBmGPNcxLSo2imbLRSfaH2GNM1E6wDhg/nW7IVWAY8iMWLEYhgkUm9BBaphRgIVQRYQYjqLGSIuzy066lg="
           file:
             - release/dep-linux-amd64
             - release/dep-linux-amd64.sha256
