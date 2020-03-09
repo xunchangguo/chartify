@@ -27,8 +27,6 @@ jobs:
             - release/chartify-windows-386.exe.sha256
           skip_cleanup: true
           on:
-            repo: xunchangguo/chartify
-            branch: master
             tags: true
 addons:
   ssh_known_hosts: github.com
