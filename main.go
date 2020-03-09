@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
+	"kubepack.dev/chartify/pkg/cmd"
 	v "github.com/appscode/go/version"
 	"github.com/spf13/cobra"
-	"github.com/xunchangguo/chartify/pkg/cmd"
 )
 
 var (
