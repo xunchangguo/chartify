@@ -12,6 +12,8 @@ jobs:
       before_deploy:
         - chmod +x ./hack/build-all.bash
         - ./hack/build-all.bash
+        - pwd
+        - ll
       deploy:
         - provider: releases
           api_key:
