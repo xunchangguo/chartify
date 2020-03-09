@@ -45,7 +45,7 @@ for OS in ${DEP_BUILD_PLATFORMS[@]}; do
 
     CGO_ENABLED=0
 
-    echo "Building for ${OS}/${ARCH} with CGO_ENABLED=${CGO_ENABLED}"
+    echo "Building for ${OS}/${ARCH} with CGO_ENABLED=${CGO_ENABLED}, ${DEP_ROOT}/release/${NAME}"
     GOARCH=${ARCH} GOOS=${OS} CGO_ENABLED=${CGO_ENABLED} ${GO_BUILD_CMD} -ldflags "${GO_BUILD_LDFLAGS}"\
      -o "${DEP_ROOT}/release/${NAME}" .
     shasum -a 256 "${DEP_ROOT}/release/${NAME}" > "${DEP_ROOT}/release/${NAME}".sha256
