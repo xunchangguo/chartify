@@ -6,7 +6,7 @@ jobs:
   include:
     - go: 1.10.x
       stage: deploy
-      go_import_path: github.com/xunchangguo/chartify
+      go_import_path: kubepack.dev/chartify
       install: skip
       script: skip
       before_deploy:
