@@ -92,6 +92,7 @@ const (
 	MinReplicas                    = "minReplicas"
 	MaxReplicas                    = "maxReplicas"
 	TargetCPUUtilizationPercentage = "targetCPUUtilizationPercentage"
+	Cluster                        = "cluster"
 )
 
 func (v *valueFileGenerator) MergeInto(dst map[string]interface{}, key string) {
